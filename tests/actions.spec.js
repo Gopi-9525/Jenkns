@@ -1,0 +1,46 @@
+import{test,expect} from "@playwright/test"
+test("keyboard actions",async({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    await page.locator('//input[@id="name"]').fill("Playwright")
+    await page.keyboard.press("Control+A")
+    await page.keyboard.press("Control+C")
+    await page.keyboard.press("Tab")
+    await page.keyboard.press("Control+V")
+    await page. keyboard.press("Tab")
+    await page.keyboard.press("Control+V")
+    //await page.pause()
+})
+test("Mouse Hover",async({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    await page.locator('//button[text()="Point Me"]').hover()
+    //await page.pause()
+})
+test("Right click",async({page})=>{
+    await page.goto("https://swisnl.github.io/jQuery-contextMenu/demo.html")
+    await page.locator('//span[text()="right click me"]').click({button:"right"})
+    //await page. pause()
+})
+test("Doubleclick",async({page})=>{
+  await page.goto("https://testautomationpractice.blogspot.com/")
+  await page.locator('//input[@id="field1"]').fill("Playwright")
+  await page.locator('//button[text()="Copy Text"]').dblclick()
+  await expect(page.locator('//input[@id="field2"]')).toHaveValue("Playwright")
+ // await page.pause()
+})
+test("Scroll",async({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    await page.mouse.wheel(0,2000)// x= Horizontal,Y=Vertical
+   // await page.pause()
+    await page.mouse.wheel(0,-2000)
+    //await page.pause()
+    await page.locator('//a[text()="Blogger"]').scrollIntoViewIfNeeded()
+    //await page.pause()
+})
+test("Drag and Drop",async({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
+    //const source=await page.locator('//div[@id="draggable"]')
+    //const target=await page.locator('//div[@id="droppable"]')
+    //await source.dragTo(target)
+    await page.locator('//div[@id="draggable"]').dragTo(page.locator('//div[@id="droppable"]'))
+    //await page.pause()
+})

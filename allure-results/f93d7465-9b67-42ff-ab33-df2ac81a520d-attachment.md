@@ -1,0 +1,97 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: maintask.spec.js >> MainTask
+- Location: tests\maintask.spec.js:2:5
+
+# Error details
+
+```
+Error: expect(page).toHaveTitle(expected) failed
+
+Expected: "Checkout: Your Information"
+Received: "Swag Labs"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveTitle" with timeout 5000ms
+    14 × locator resolved to <html lang="en">…</html>
+       - unexpected value "Swag Labs"
+
+```
+
+```yaml
+- banner:
+  - button "Open Menu"
+  - img "Open Menu"
+  - text: Swag Labs
+  - button "Cart, 2 items": "2"
+  - text: "Checkout: Overview"
+- main:
+  - text: QTY Description 1
+  - button "View details for Sauce Labs Onesie": Sauce Labs Onesie
+  - text: Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel. $7.99 1
+  - button "View details for Sauce Labs Bolt T-Shirt": Sauce Labs Bolt T-Shirt
+  - text: "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 Payment Information: SauceCard #31337 Shipping Information: Free Pony Express Delivery! Price Total Item total: $23.98 Tax: $1.92 Total: $25.90"
+  - button "Cancel"
+  - button "Finish"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "X":
+        - /url: https://x.com/saucelabs
+    - listitem:
+      - link "Facebook":
+        - /url: https://www.facebook.com/saucelabs
+    - listitem:
+      - link "LinkedIn":
+        - /url: https://www.linkedin.com/company/sauce-labs/
+  - text: © 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy
+```
+
+# Test source
+
+```ts
+  1  | import {test,expect}from "@playwright/test"
+  2  | test ("MainTask",async({page})=>{
+  3  |     //Step1:Login
+  4  |     await page.goto("https://www.saucedemo.com/")
+  5  |     await expect(page.locator('//div[text()="Swag Labs"]')).toHaveText("Swag Labs")
+  6  |     await expect (page).toHaveURL("https://www.saucedemo.com/")
+  7  |     await page.locator('//input[@placeholder="Username"]').fill("standard_user")
+  8  |     await page.locator('//input[@placeholder="Password"]').fill("secret_sauce")
+  9  |     await page.locator('//input[@id="login-button"]').click()
+  10 |     //Step2:Select products
+  11 |     await expect(page.locator('//span[text()="Products"]')).toHaveText("Products")
+  12 |     await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
+  13 |     await page.locator('//select[@class="product_sort_container"]').selectOption({index:2})
+  14 |    await page.locator('//button[@name="add-to-cart-sauce-labs-onesie"]').click()
+  15 |    await page.locator('//button[@id="add-to-cart-sauce-labs-bolt-t-shirt"]').click()
+  16 |    await expect (page.locator('//span[text()="2"]')).toHaveText("2")
+  17 |    //Step3 :Verify Shopping Cart
+  18 |    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
+  19 |    await page.locator('//a[@data-test="shopping-cart-link"]').click()
+  20 |    await expect(page.locator('//span[text()="Your Cart"]')).toHaveText("Your Cart")
+  21 |    await expect(page.locator('//div[text()="Sauce Labs Onesie"]')).toBeVisible()
+  22 |    await expect(page.locator('//div[text()="15.99"]')).toBeVisible()
+  23 |    await page.locator('//button[@id="checkout"]').click()
+  24 |    //Step4:Enter Checkout
+  25 |    await page.locator('//input[@id="first-name"]').fill("Gopinath")
+  26 |    await page.locator('//input[@id="last-name"]').fill("N")
+  27 |    await page.locator('//input[@placeholder="Zip/Postal Code"]').fill("624613")
+  28 |    await page.locator('//input[@id="continue"]').click()
+  29 |    //await expect(page.locator('//span[text()="Checkout: Your Information"]')).to
+> 30 |    await expect(page).toHaveTitle("Checkout: Your Information")
+     |                       ^ Error: expect(page).toHaveTitle(expected) failed
+  31 |   // await expect(page.locator(''))
+  32 |    //await expect(page.locator(''))
+  33 |    //await expect(page.locator(''))
+  34 |    
+  35 |    await page.pause()
+  36 | })
+```
