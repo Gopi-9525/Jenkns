@@ -27,7 +27,7 @@ test("tab handling",async({browser})=>{
      ])
      await newtab.waitForLoadState()// wait for page to load fully
      await newtab.locator('//a[@href="/book-a-free-demo"]/child::button').click()
-     await newtab.pause()
+     //await newtab.pause()
     
 })
 test("pagenavigation",async({page})=>{

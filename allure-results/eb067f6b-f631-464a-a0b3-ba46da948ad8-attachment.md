@@ -1,0 +1,221 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: task6drpdwn.spec.js >> drop down in ways
+- Location: tests\task6drpdwn.spec.js:2:5
+
+# Error details
+
+```
+Error: expect(locator).toHaveText(expected) failed
+
+Locator: locator('//p[@class="text-sm font-medium"]')
+Expected: "You have selected C#"
+Error: strict mode violation: locator('//p[@class="text-sm font-medium"]') resolved to 2 elements:
+    1) <p class="text-sm font-medium">You have selected Apple</p> aka getByText('You have selected Apple')
+    2) <p class="text-sm font-medium">You have selected C#</p> aka getByText('You have selected C#')
+
+Call log:
+  - Expect "toHaveText" locator('//p[@class="text-sm font-medium"]') with timeout 5000ms
+  - waiting for locator('//p[@class="text-sm font-medium"]')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation "main navigation" [ref=e4]:
+    - generic [ref=e5]:
+      - link "LetCode Home" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "LetCode" [ref=e7]
+      - generic [ref=e8]:
+        - link "Work-Space" [ref=e9] [cursor=pointer]:
+          - /url: /test
+        - generic [ref=e10]:
+          - button "Products" [ref=e11] [cursor=pointer]
+          - generic:
+            - link "Ortoni Report":
+              - /url: /product/ortoni-report
+            - link "LetXPath":
+              - /url: /product/letxpath
+            - link "Playwright Runner":
+              - /url: /product/playwright-runner
+        - generic [ref=e15]:
+          - button "Grooming" [ref=e16] [cursor=pointer]
+          - generic:
+            - link "Test Practice":
+              - /url: /test-practice
+            - link "Interview Q & A":
+              - /url: /interview
+            - link "Playwright Quiz":
+              - /url: /pw-quiz
+            - link "Resume Builder":
+              - /url: /resume-builder
+        - link "Courses" [ref=e20] [cursor=pointer]:
+          - /url: /courses
+        - link "Contact" [ref=e21] [cursor=pointer]:
+          - /url: /contact
+      - button "Switch to dark mode" [ref=e23] [cursor=pointer]
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - generic [ref=e30]:
+        - navigation "Breadcrumb" [ref=e31]:
+          - link "Workspace" [ref=e32] [cursor=pointer]:
+            - /url: /test
+          - generic [ref=e41]: Dropdown
+        - heading "Dropdown" [level=1] [ref=e44]
+      - generic [ref=e46]:
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: Select the apple using visible text
+            - combobox "Select the apple using visible text" [ref=e52]:
+              - option "Select Fruit"
+              - option "Apple" [selected]
+              - option "Mango"
+              - option "Orange"
+              - option "Banana"
+              - option "Pine Apple"
+            - paragraph [ref=e54]: You have selected Apple
+          - generic [ref=e55]:
+            - generic [ref=e56]: Select your super hero's
+            - listbox "Select your super hero's" [ref=e58]:
+              - option "Ant-Man" [ref=e59]
+              - option "Aquaman" [ref=e60]
+              - option "The Avengers" [ref=e61]
+              - option "Batman" [ref=e62]
+              - option "Batwoman" [ref=e63]
+              - option "Black Panther" [ref=e64]
+              - option "Captain America" [ref=e65]
+              - option "Captain Marvel" [ref=e66]
+              - option "Daredevil" [ref=e67]
+              - option "Doc Savage" [ref=e68]
+              - option "Doctor Strange" [ref=e69]
+              - option "Elektra" [ref=e70]
+              - option "Fantastic Four" [ref=e71]
+              - option "Ghost Rider" [ref=e72]
+              - option "Green Lantern" [ref=e73]
+              - option "Guardians of the Galaxy" [ref=e74]
+              - option "Hellboy" [ref=e75]
+              - option "Incredible Hulk" [ref=e76]
+              - option "Iron Man" [ref=e77]
+              - option "Marvelman" [ref=e78]
+              - option "Robin" [ref=e79]
+              - option "The Shadow" [ref=e80]
+              - option "Spider-Man" [ref=e81]
+              - option "Supergirl" [ref=e82]
+              - option "Superman" [ref=e83]
+              - option "Thor" [ref=e84]
+              - option "Wolverine" [ref=e85]
+              - option "Wonder Woman" [ref=e86]
+              - option "X-Men" [ref=e87]
+          - generic [ref=e88]:
+            - generic [ref=e89]: Select the last programming language and print all the options
+            - combobox "Select the last programming language and print all the options" [ref=e91]:
+              - option "JavaScript"
+              - option "Java"
+              - option "Python"
+              - option "Swift"
+              - option "C#" [selected]
+            - paragraph [ref=e93]: You have selected C#
+          - generic [ref=e94]:
+            - generic [ref=e95]: Select India using value & print the selected value
+            - combobox "Select India using value & print the selected value" [ref=e97]:
+              - option "Argentina" [selected]
+              - option "Bolivia"
+              - option "Brazil"
+              - option "Chile"
+              - option "Colombia"
+              - option "Ecuador"
+              - option "India"
+              - option "Paraguay"
+              - option "Peru"
+              - option "Suriname"
+              - option "Uruguay"
+              - option "Venezuela"
+        - generic [ref=e99]:
+          - heading "Learning Points" [level=3] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - generic [ref=e110]: selectByVisibleText()
+            - listitem [ref=e111]:
+              - generic [ref=e115]: isMultiple()
+            - listitem [ref=e116]:
+              - generic [ref=e120]: How to select multiple values
+            - listitem [ref=e121]:
+              - generic [ref=e125]: selectByIndex()
+            - listitem [ref=e126]:
+              - generic [ref=e130]: getOptions()
+            - listitem [ref=e131]:
+              - generic [ref=e135]: selectByValue()
+            - listitem [ref=e136]:
+              - generic [ref=e140]: getFirstSelectedOption()
+          - generic [ref=e141]:
+            - link "Watch Tutorial" [ref=e142] [cursor=pointer]:
+              - /url: /video/dropdowns
+            - generic [ref=e146]:
+              - text: "Practice ID:"
+              - code [ref=e147]: dropdowns
+        - insertion [ref=e151]
+      - insertion [ref=e155]
+  - contentinfo [ref=e156]:
+    - generic [ref=e157]:
+      - paragraph [ref=e158]:
+        - text: © 2026 LetCode ·
+        - link "Koushik Chatterjee" [ref=e159] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/ortoni/
+        - text: "&"
+        - link "Bollineni Yaswanth" [ref=e160] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/bollineni-lakshmi-yaswanth-14472a199
+        - link "LetCode tutorials" [ref=e161] [cursor=pointer]
+      - generic [ref=e165]:
+        - link "GitHub" [ref=e166] [cursor=pointer]:
+          - /url: https://github.com/ortoniKC
+        - link "YouTube" [ref=e170] [cursor=pointer]:
+          - /url: https://www.youtube.com/@letcode
+        - link "LinkedIn" [ref=e174] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/ortoni/
+        - link "Contact" [ref=e180] [cursor=pointer]:
+          - /url: /contact
+        - link "🍕 Support" [ref=e181] [cursor=pointer]:
+          - /url: https://buymeacoffee.com/letcode
+```
+
+# Test source
+
+```ts
+  1  | import{test,expect}from "@playwright/test"
+  2  | test("drop down in ways",async({page})=>{
+  3  | await page.goto("https://letcode.in/dropdowns")
+  4  | await page.locator('//select[@id="fruits"]').selectOption("Apple")
+  5  | await expect(page.locator('//p[@class="text-sm font-medium"]')).toHaveText("You have selected Apple ")
+  6  | await page.locator('//select[@id="lang"]').selectOption({index:4})
+> 7  | await expect(page.locator('//p[@class="text-sm font-medium"]')).toHaveText("You have selected C#")
+     |                                                                 ^ Error: expect(locator).toHaveText(expected) failed
+  8  | await page.locator('//select[@id="country"]').selectOption({value:"India"})
+  9  | await expect (page.locator('//p[@class="text-sm font-medium"]')).toHaveText("Selected Value:India")
+  10 | //await page.pause()
+  11 | })
+  12 | test("multi select drop down",async({page})=>{
+  13 |     await page.goto("https://letcode.in/dropdowns")
+  14 |     await page.locator('//select[@id="superheros"]').selectOption(["Aquaman","Batman","Black Panther","Captain Marvel","Doc Savage"])
+  15 | 
+  16 |       const lang=await page.locator('//select[@id="lang"]').textContent() 
+  17 |       console.log(lang)
+  18 |       const herocount=await page.locator('//select[@id="superheros"]/option').count()
+  19 |       await expect (page.locator('//select[@id="superheros"]/option')).toHaveCount(29)
+  20 |       console.log(herocount)
+  21 | 
+  22 |       const text= await page.locator('//option[@value="India"]').textContent()
+  23 |       console.log(text)
+  24 | 
+  25 |        //await page.pause()
+  26 |        
+  27 | })
+```

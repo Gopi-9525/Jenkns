@@ -23,7 +23,7 @@ await page.getByRole("button",{name:"login"})
 //2.relative Xpath(//tagname@attributename and attribute value)skip
 test("login using xpath",async({page})=>{
 await page.goto("https://www.facebook.com/")
-await page.locator('//input[@name="email"]').fill("example.123@gmail.com")
-await page.locator('//input[@type="password"]').fill("Password123")
-await page.locator('//div[@aria-label="Log in"]').click()
+await page.locator('//input[@name="email"]').fill("example123@gmail.com")
+await page.locator('//input[@name="pass"]').fill("Password123")
+await page.locator('//span[text()="Log in"]').click()
 })

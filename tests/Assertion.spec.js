@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test'
 
-test("asserion",async({page})=>{https://testautomationpractice.blogspot.com/
-    await page.goto("")
+test("asserion",async({page})=>{
+    await page.goto("https://testautomationpractice.blogspot.com/")
 
     await expect.soft(page).toHaveURL("https://testautomationpractice.blogspot.com/")
     await expect.soft(page).toHaveTitle("Automation Testing Practice")
